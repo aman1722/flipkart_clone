@@ -1,14 +1,19 @@
 
-import './App.css';
+
 
 
 // components import -------->
-import Header from "./components/header/Header" 
+import Header from "./components/header/Header"
+import Home from "./components/home/Home";
+import { Box } from "@mui/material"
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
+    <div>
+      <Header />
+      <Box style={{ marginTop : 54 }}>
+        <Home />
+      </Box>
     </div>
   );
 }
