@@ -31,7 +31,11 @@ const LoginButton = styled(Button)`
     border-radius: 2px;
     box-shadow: none;
     font-weight: 600;
-    height: 32px
+    height: 32px;
+    : hover{
+        color: #2874f0;
+        background-color: #FFF 
+    }
 `
 
 const CoustomButton = ()=>{

@@ -28,9 +28,9 @@ userRouter.post("/signup",async(req,res)=>{
 
 //Login logic
 userRouter.post("/login",async(req,res)=>{
-     const {email,password}=req.body
+     const {username,password}=req.body
      try {
-        const user = await UserModel.find({email})
+        const user = await UserModel.find({username})
 
         if(user.length>0){
             bcrypt.compare(password, user[0].password, function(err, result) {

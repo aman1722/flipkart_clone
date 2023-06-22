@@ -159,8 +159,8 @@ const LoginDialog = ({ open, setOpen }) => {
                     {
                         account.view === 'login' ? 
                         <Wrapper>
-                            <TextField variant="standard" onChange={(e) => onValueChange(e)} name='username' label='Enter Email/Mobile number' />
-                            { error && <Error>Please enter valid Email ID/Mobile number</Error> }
+                            <TextField variant="standard" onChange={(e) => onValueChange(e)} name='username' label='Enter Username' />
+                            { error && <Error>Wrong Credentials! Please Signup!</Error> }
                             <TextField variant="standard" onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
                             <Text>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
                             <LoginButton onClick={() => loginUser()} >Login</LoginButton>
