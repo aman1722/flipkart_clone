@@ -2,6 +2,8 @@ import { useEffect } from "react";
 
 import NavBar from "./NavBar";
 import Banner from "./Banner";
+import Slide from "./Slide";
+
 import { Box, styled } from "@mui/material";
 
 import { getProducts } from "../../redux/actions/productActions";
@@ -26,6 +28,7 @@ const Home = () => {
       <NavBar />
       <Componant>
         <Banner />
+        <Slide products={products} />
       </Componant>
     </>
   );
