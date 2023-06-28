@@ -1,7 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import { Box, Typography , Button , styled } from "@mui/material";
+import { Box, Typography , Button ,Divider, styled } from "@mui/material";
 import Countdown from 'react-countdown';
 
 
@@ -47,6 +47,10 @@ const DaelText=styled(Typography)`
 `
 const ViewAllButton = styled(Button)`
   margin-left : auto;
+  background-color: #2874f0;
+  border-radius: 2px;
+  font size:13px;
+  font-weight:600;
 `
 
 const Slide = ({ products }) => {
@@ -66,6 +70,7 @@ const Slide = ({ products }) => {
         </Timer>
         <ViewAllButton variant="contained">View All</ViewAllButton>
       </Deal>
+      <Divider/>
       <Carousel
         responsive={responsive}
         swipeable={false}
@@ -80,7 +85,9 @@ const Slide = ({ products }) => {
         containerClass="carousel-container"
       >
         {products.map((product) => (
-          <img src={product.url} alt="product" />
+          <Box>
+             <img src={product.url} alt="product" />
+          </Box>
         ))}
       </Carousel>
     </Componant>
