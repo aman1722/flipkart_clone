@@ -1,9 +1,8 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import { Box, Typography , Button ,Divider, styled } from "@mui/material";
-import Countdown from 'react-countdown';
-
+import { Box, Typography, Button, Divider, styled } from "@mui/material";
+import Countdown from "react-countdown";
 
 const responsive = {
   desktop: {
@@ -20,57 +19,71 @@ const responsive = {
   },
 };
 
-
 const Componant = styled(Typography)`
   margin-top: 10px;
-  background-color: #FFFFFF;
-`
+  background-color: #ffffff;
+`;
 const Deal = styled(Typography)`
   padding: 15px 20px;
   display: flex;
-
-`
+`;
 
 const Timer = styled(Box)`
   display: flex;
   margin-left: 10px;
-  align-items:center;
+  align-items: center;
   color: #7f7f7f;
-`
+`;
 
-const DaelText=styled(Typography)`
-  font-size:22px;
-  font-weight:600;
+const DaelText = styled(Typography)`
+  font-size: 22px;
+  font-weight: 600;
   margin-right: 25px;
   line-height: 32px;
-
-`
+`;
 const ViewAllButton = styled(Button)`
   margin-left : auto;
   background-color: #2874f0;
   border-radius: 2px;
   font size:13px;
   font-weight:600;
-`
+`;
 
-const Slide = ({ products }) => {
-  const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
+const Image = styled("img")({
+  width: "auto",
+  height: 150,
+});
 
-  const renderer = ({ hours,minutes,seconds })=>{
-        return <Box variant="span">{hours} : {minutes} : {seconds} Left</Box>
-  }
+const Text = styled(Typography)`
+  font-size: 14px;
+  margin-top: 5px;
+`;
+
+const Slide = ({ products, title, timer }) => {
+  const timerURL =
+    "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg";
+
+  const renderer = ({ hours, minutes, seconds }) => {
+    return (
+      <Box variant="span">
+        {hours} : {minutes} : {seconds} Left
+      </Box>
+    );
+  };
 
   return (
     <Componant>
       <Deal>
-        <DaelText>Deal of The Day</DaelText>
-        <Timer>
-          <img src={timerURL} alt="timer" style={{ width: 24 }}/>
-          <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
-        </Timer>
+        <DaelText>{title}</DaelText>
+        {timer && (
+          <Timer>
+            <img src={timerURL} alt="timer" style={{ width: 24 }} />
+            <Countdown date={Date.now() + 5.04e7} renderer={renderer} />
+          </Timer>
+        )}
         <ViewAllButton variant="contained">View All</ViewAllButton>
       </Deal>
-      <Divider/>
+      <Divider />
       <Carousel
         responsive={responsive}
         swipeable={false}
@@ -85,8 +98,15 @@ const Slide = ({ products }) => {
         containerClass="carousel-container"
       >
         {products.map((product) => (
-          <Box>
-             <img src={product.url} alt="product" />
+          <Box textAlign="center" style={{ padding: "25px 13px" }}>
+            <Image src={product.url} alt="product" />
+            <Text style={{ fontWeight: 600, color: "#212121" }}>
+              {product.title.shortTitle}
+            </Text>
+            <Text style={{ color: "green" }}>{product.discount}</Text>
+            <Text style={{ color: "#212121", opacity: ".6" }}>
+              {product.tagline}
+            </Text>
           </Box>
         ))}
       </Carousel>
