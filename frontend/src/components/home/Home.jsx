@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import NavBar from "./NavBar";
 import Banner from "./Banner";
 import Slide from "./Slide";
+import MidSlide from "./MidSlide";
+import MidSection from "./MidSection";
 
 import { Box, styled } from "@mui/material";
 
@@ -28,7 +30,8 @@ const Home = () => {
       <NavBar />
       <Componant>
         <Banner />
-        <Slide products={products} title="Deal of The Day" timer={true} />
+        <MidSlide products={products} title="Deal of The Day" timer={true} />
+        <MidSection />
         <Slide products={products} title="Discounts for You" timer={false} />
         <Slide products={products} title="Suggested Items" timer={false} />
         <Slide products={products} title="Top Selections" timer={false} />
