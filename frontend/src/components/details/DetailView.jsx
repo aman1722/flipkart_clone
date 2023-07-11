@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { styled, Box, Typography, Grid } from '@mui/material';
+import { Box, Typography, Grid, styled } from '@mui/material';
 
 import ProductDetail from './ProductDetail';
 import ActionItem from './ActionItem';
@@ -18,16 +18,13 @@ const Component = styled(Box)`
 const Container = styled(Grid)(({ theme }) => ({
     background: '#FFFFFF',
     display: 'flex',
-    [theme.breakpoints.down('md')]: {
-        margin: 0
-    }
+    // [theme.breakpoints.down('md')]: {
+    //     margin: 0
+    // }
 }))
 
 const RightContainer = styled(Grid)`
     margin-top: 50px;
-    & > p {
-        margin-top: 10px;
-    }
 `;
 
 const DetailView = () => {
@@ -46,7 +43,7 @@ const DetailView = () => {
 
     return (
         <Component>
-            <Box></Box>
+            {/* <Box></Box> */}
             { product && Object.keys(product).length &&
                 <Container container> 
                     <Grid item lg={4} md={4} sm={8} xs={12}>
@@ -56,12 +53,12 @@ const DetailView = () => {
                         <Typography>{product.title.longTitle}</Typography>
                         <Typography style={{marginTop: 5, color: '#878787', fontSize: 14 }}>
                             8 Ratings & 1 Reviews
-                            <span><img src={fassured} style={{width: 77, marginLeft: 20}} /></span>
+                            <Box component='span'><img src={fassured} style={{width: 77, marginLeft: 20}} /></Box>
                         </Typography>
                         <Typography>
-                            <span style={{ fontSize: 28 }}>₹{product.price.cost}</span>&nbsp;&nbsp;&nbsp; 
-                            <span style={{ color: '#878787' }}><strike>₹{product.price.mrp}</strike></span>&nbsp;&nbsp;&nbsp;
-                            <span style={{ color: '#388E3C' }}>{product.price.discount} off</span>
+                            <Box component='span' style={{ fontSize: 28 }}>₹{product.price.cost}</Box>&nbsp;&nbsp;&nbsp; 
+                            <Box component='span' style={{ color: '#878787' }}><strike>₹{product.price.mrp}</strike></Box>&nbsp;&nbsp;&nbsp;
+                            <Box component='span' style={{ color: '#388E3C' }}>{product.price.discount} off</Box>
                         </Typography>
                         <ProductDetail product={product} />
                     </RightContainer>
