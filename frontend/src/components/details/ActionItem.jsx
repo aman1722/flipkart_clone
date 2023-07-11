@@ -13,23 +13,34 @@ import { ShoppingCart as Cart, FlashOn as Flash } from '@mui/icons-material';
 const LeftContainer = styled(Box)(({ theme }) => ({
     minWidth: '40%',
     padding: '40px 0 0 80px',
-    // [theme.breakpoints.down('md')]: {
-    //     padding: '20px 40px'
-    // }
+    [theme.breakpoints.down('lg')]: {
+        padding: '20px 40px'
+    }
 }))
 
 const Image = styled('img')({
-  
+    width: '90%',
     padding:"15px"
 });
 
-const StyledButton = styled(Button)`
-    width: 48%;
-    border-radius: 2px;
-    height: 50px;
-    color: #FFF;
-`;
+// const StyledButton = styled(Button)`
+//     width: 48%;
+//     border-radius: 2px;
+//     height: 50px;
+//     color: #FFF;
+// `;
 
+const StyledButton = styled(Button)(({ theme }) => ({
+    width:"48%",
+    height:50,
+    borderRadius:2,
+    [theme.breakpoints.down('lg')]: {
+        width:"46%"
+    },
+    [theme.breakpoints.down("sm")]:{
+        width:"48%"
+    }
+}))
 const ActionItem = ({ product }) => {
     // const navigate = useNavigate();
     // const { id } = product;
@@ -54,7 +65,7 @@ const ActionItem = ({ product }) => {
     // onClick={() => buyNow()}
     return (
         <LeftContainer>
-            <Box style={{ padding: '15px 20px', border: '1px solid #f0f0f0', width: '90%'}}>
+            <Box style={{ padding: '15px 20px', border: '1px solid #f0f0f0'}}>
             <Image src={product.detailUrl} alt='product' />
             </Box>
             <StyledButton  style={{marginRight: 10, background: '#ff9f00'}} variant="contained"><Cart />Add to Cart</StyledButton>
