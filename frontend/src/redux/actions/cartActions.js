@@ -6,7 +6,7 @@ const Url = "http://localhost:8080"
 
 export const addToCart = (id, quantity) => async (dispatch) => {
     try { 
-        const { data } = await axios.get(`${Url}/product/${id}`);
+        const { data } = await axios.get(`${Url}/products/${id}`);
 
         dispatch({ type: actionTypes.ADD_TO_CART, payload: { ...data, quantity } });
 
