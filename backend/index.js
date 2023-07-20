@@ -4,6 +4,11 @@ require("dotenv").config()
 const cors = require("cors");
 const { userRouter } = require("./routes/user.routes");
 const { productRouter } = require("./routes/products.routes");
+const paymentControllers = require("./controllers/paymentControllers")
+// const paytmChecksum = require("./paytm/PaytmChecksum");
+// const { addPaymentGateway } = require("./controllers/paytm-controllers");
+// const { addPaymentGateway } = require("./controllers/paytm-controllers");
+// const  { PaytmChecksum} = require("./paytm/PaytmChecksum")
 
 const app = express();
 
@@ -13,6 +18,9 @@ app.use(express.json());
 app.use("/users",userRouter)
 app.use("/products",productRouter)
 
+// app.post("/payment",addPaymentGateway)
+app.post("/orders",paymentControllers.orders);
+app.post("/verify",paymentControllers.verify);
 
 app.listen(process.env.port,async()=>{
     try {
@@ -24,5 +32,10 @@ app.listen(process.env.port,async()=>{
     }
    console.log(`app is running at port ${process.env.port}`)
  })
+
+
+
+
+
 
  
