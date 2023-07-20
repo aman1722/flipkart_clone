@@ -91,11 +91,11 @@ const Cart = () => {
             amount: Number(data.amount),
             currency: data.currency,
             order_id: data.id,
-            name: 'SHOPPING APP',//
-            description: 'XYZ',//
+            name: 'FLIPKART CLONE',//
+            description: 'MY WEBSITE',//
             handler: function (response) {
                 console.log(response, "56")
-                axios.post('http://localhost:8080/verify', { response: response })
+                axios.post('https://flipkart-clone-o5h3.onrender.com/verify', { response: response })
                     .then(res => {
                         console.log(res, "37")
                         // your orders
@@ -119,7 +119,7 @@ const Cart = () => {
         // }
         // post(information);
         const _data={amount:amount}
-        axios.post(`http://localhost:8080/orders`,_data)
+        axios.post(`https://flipkart-clone-o5h3.onrender.com/orders`,_data)
         .then(res=>{
             console.log(res.data);
             handleOprnrazorPay(res.data.data);

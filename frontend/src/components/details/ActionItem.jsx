@@ -59,7 +59,7 @@ const ActionItem = ({ product }) => {
       handler: function (response) {
         console.log(response, "56");
         axios
-          .post("http://localhost:8080/verify", { response: response })
+          .post("https://flipkart-clone-o5h3.onrender.com/verify", { response: response })
           .then((res) => {
             console.log(res, "37");
             // your orders
@@ -84,7 +84,7 @@ const ActionItem = ({ product }) => {
     if (token) {
       const _data = { amount: amount };
       axios
-        .post(`http://localhost:8080/orders`, _data)
+        .post(`https://flipkart-clone-o5h3.onrender.com/orders`, _data)
         .then((res) => {
           console.log(res.data);
           handleOprnrazorPay(res.data.data);
