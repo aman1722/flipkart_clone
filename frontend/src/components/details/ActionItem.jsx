@@ -40,6 +40,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 const ActionItem = ({ product }) => {
   const token = localStorage.getItem("token");
+  const signUp = localStorage.getItem("signup")
   const navigate = useNavigate();
   const { id } = product;
 
@@ -81,7 +82,7 @@ const ActionItem = ({ product }) => {
     //     params: response
     // }
     // post(information);
-    if (token) {
+    if (token||signUp) {
       const _data = { amount: amount };
       axios
         .post(`https://flipkart-clone-o5h3.onrender.com/orders`, _data)
@@ -104,7 +105,7 @@ const ActionItem = ({ product }) => {
   };
 
   const addItemToCart = () => {
-    if (token) {
+    if (token||signUp) {
         toast.info("Product Added To Cart!",{
             position: "top-center",
             theme: "colored",

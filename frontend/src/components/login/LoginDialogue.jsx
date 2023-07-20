@@ -181,6 +181,7 @@ const LoginDialog = ({ open, setOpen }) => {
         theme: "colored",
       });
       setTimeout(() => {
+        localStorage.setItem("signup",true);
         handleClose();
         setAccount(signup.username);
       }, 2000);

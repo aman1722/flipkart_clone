@@ -21,10 +21,11 @@ const EmptyCart = () => {
     "https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90";
 
   const token = localStorage.getItem("token");
+  const signUp = localStorage.getItem("signup")
 
   return (
     <>
-      {token ? (
+      {token||signUp ? (
         <Box style={{ background: "#f2f2f2", height: "90vh" }}>
           <Component>
             <Container>
