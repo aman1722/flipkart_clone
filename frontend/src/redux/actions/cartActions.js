@@ -22,3 +22,10 @@ export const removeFromCart = (id) => (dispatch) => {
     })
 
 };
+
+export const afterPayment =() =>(dispatch)=> {
+    dispatch({
+        type: actionTypes.CART_RESET,
+        payload : []
+    })
+}

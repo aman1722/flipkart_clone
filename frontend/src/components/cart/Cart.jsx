@@ -4,7 +4,7 @@ import { Box, Typography, Button, Grid, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
+import { addToCart, afterPayment, removeFromCart } from '../../redux/actions/cartActions';
 
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
@@ -100,10 +100,15 @@ const Cart = () => {
                         console.log(res, "37")
                         // your orders
                         navigate('/');
+                        setTimeout(()=>{
+                            dispatch(afterPayment());
+                        },1000)
+                        
                     })
                     .catch(err => {
                         console.log(err)
                     })
+                    
             }
 
         }
@@ -127,6 +132,7 @@ const Cart = () => {
         .catch(err=>{
             console.log(err)
         })
+
     }
     // const buyNow = async () => {
     //     let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
