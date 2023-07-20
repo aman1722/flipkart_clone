@@ -4,6 +4,8 @@ import { Dialog, DialogContent, TextField, Box, Button, Typography, styled } fro
 
 import { authenticateLogin, authenticateSignup } from '../../service/api';
 import { LoginContext } from '../../context/ContextProvider';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Component = styled(DialogContent)`
     height: 75vh;
@@ -126,20 +128,50 @@ const LoginDialog = ({ open, setOpen }) => {
 
     const loginUser = async() => {
         let response = await authenticateLogin(login);
-        if(!response) 
+        console.log(response)
+        if(!response) {
+
             showError(true);
+            toast.error("Login Failed!",{
+                position: "top-center",
+                theme: "colored",
+            });
+        }
         else {
-            showError(false);
-            handleClose();
-            setAccount(login.username);
+            toast.info("Login Sucessfull!",{
+                position: "top-center",
+                theme: "colored",
+            });
+            setTimeout(()=>{
+                localStorage.setItem("token",response.data.token)
+                showError(false);
+                handleClose();
+                setAccount(login.username);
+            },2000)
+           
+            
         }
     }
 
     const signupUser = async() => {
         let response = await authenticateSignup(signup);
-        if(!response) return;
-        handleClose();
-        setAccount(signup.username);
+        if(!response){
+            toast.error("SignUp Failed!",{
+                position: "top-center",
+                theme: "colored",
+            });
+            return;
+        } else{
+            toast.info("SignUp Sucessfull!",{
+                position: "top-center",
+                theme: "colored",
+            });
+            setTimeout(()=>{
+                handleClose();
+                setAccount(signup.username);
+            },2000)
+        }
+        
     }
     
     const toggleSignup = () => {
@@ -183,6 +215,7 @@ const LoginDialog = ({ open, setOpen }) => {
                     }
                 </Box>
             </Component>
+            <ToastContainer />
         </Dialog>
     )
 }

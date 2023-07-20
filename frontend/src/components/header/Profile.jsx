@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Box, Typography, Menu, MenuItem, styled } from "@mui/material";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
+
 // Styling ----------> 
 const Component = styled(Menu)`
     margin-top: 5px;
@@ -25,7 +26,9 @@ const Profile = ({ account,setAccount }) => {
     }
 
     const logoutUser = ()=>{
+        localStorage.clear();
         setAccount("");
+        window.location.reload();
     }
   return (
     <>
