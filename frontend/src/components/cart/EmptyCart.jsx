@@ -1,19 +1,22 @@
 import { Typography, Box, styled } from "@mui/material";
 
-const Component = styled(Box)`
-  width: 80%;
-  height: 65vh;
-  background: #fff;
-  margin: 60px 140px;
-`;
+const Component = styled(Box)(({ theme }) => ({
+  width: "80%",
+  height: "65vh",
+  background: "#fff",
+  margin: "60px 140px",
+  [theme.breakpoints.down('md')]: {
+    margin:"auto"
+  }
+}));
 
-const Container = styled(Box)`
-  text-align: center;
-  padding-top: 70px;
-`;
+const Container = styled(Box)(({ theme }) => ({
+  textAlign: "center",
+  paddingTop: "70px"
+}))
 
 const Image = styled("img")({
-  width: "15%",
+  width: "20%",
 });
 
 const EmptyCart = () => {
