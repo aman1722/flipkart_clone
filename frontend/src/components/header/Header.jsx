@@ -69,17 +69,15 @@ const Header = ()=>{
          setOpen(false)
     }
 
-
-    const listopen = ()=>(
-        <Box style={{ width : 200}} onClick={handleClose}>
-            <List>
-                <ListItem button>
-                    <CoustomButton />
-                </ListItem>
-            </List>
+    const listopen = () => (
+        <Box style={{ width: 200 }}>
+          <List>
+            <ListItem button>
+              <CoustomButton onClose={handleClose} />
+            </ListItem>
+          </List>
         </Box>
-        
-    )
+      );
     return (
         <StyledHeader>
             <Toolbar style={{minHeight:55}}>
