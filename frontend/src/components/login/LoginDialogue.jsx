@@ -9,7 +9,6 @@ import {
   Typography,
   styled,
 } from "@mui/material";
- 
 
 import { authenticateLogin, authenticateSignup } from "../../service/api";
 import { LoginContext } from "../../context/ContextProvider";
@@ -29,7 +28,7 @@ const LoginButton = styled(Button)`
   color: #fff;
   height: 48px;
   border-radius: 2px;
-  :hover  {
+  :hover {
     background: #fb641b;
   }
 `;
@@ -121,7 +120,7 @@ const accountInitialValues = {
 };
 
 const LoginDialog = ({ open, setOpen }) => {
-//   const logintrue = localStorage.getItem("login");
+  //   const logintrue = localStorage.getItem("login");
   const [login, setLogin] = useState(loginInitialValues);
   const [signup, setSignup] = useState(signupInitialValues);
   const [error, showError] = useState(false);
@@ -155,7 +154,7 @@ const LoginDialog = ({ open, setOpen }) => {
         position: "top-center",
         theme: "colored",
       });
-    //   localStorage.setItem("login", true);
+      //   localStorage.setItem("login", true);
       setTimeout(() => {
         localStorage.setItem("token", response.data.token);
 
@@ -182,7 +181,7 @@ const LoginDialog = ({ open, setOpen }) => {
         theme: "colored",
       });
       setTimeout(() => {
-        localStorage.setItem("signup",true);
+        localStorage.setItem("signup", true);
         handleClose();
         setAccount(signup.username);
       }, 2000);
@@ -226,6 +225,8 @@ const LoginDialog = ({ open, setOpen }) => {
                 onChange={(e) => onValueChange(e)}
                 name="password"
                 label="Enter Password"
+                type="password" 
+                // value={password}
               />
               <Text>
                 By continuing, you agree to Flipkart's Terms of Use and Privacy
@@ -269,12 +270,14 @@ const LoginDialog = ({ open, setOpen }) => {
                 onChange={(e) => onInputChange(e)}
                 name="password"
                 label="Enter Password"
+                type="password"
               />
               <TextField
                 variant="standard"
                 onChange={(e) => onInputChange(e)}
                 name="phone"
                 label="Enter Phone"
+                type="number"
               />
               <LoginButton onClick={() => signupUser()}>Continue</LoginButton>
             </Wrapper>
